@@ -12,7 +12,9 @@ import android.webkit.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var webView: WebView;
+    private lateinit var This : MainActivity
+    private lateinit var webView: WebView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
             webChromeClient = object : WebChromeClient() {
                 override fun onCreateWindow(view: WebView?, isDialog: Boolean, isUserGesture: Boolean, resultMsg: Message?): Boolean {
-                    val newWebView = WebView(this@MainActivity).apply {
+                    val newWebView = WebView(This).apply {
                         webViewClient = WebViewClient()
                         webChromeClient = WebChromeClient()
                         settings.javaScriptEnabled = true
